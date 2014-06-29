@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="GMod Loading Page">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <title>Centzilius' TTT Server</title>
+        <style type="text/css">
+        #header {
+        width: 100%;
+        height: 90px;
+        margin-right: 0px;
+        margin-left: 0px;
+        }
+        .navbar-header {
+        margin-top: 20px;
+        }
+        .navbar-brand {
+        font-size: 30px;
+        }
+        .navbar {
+        padding-left: 15px;
+        padding-right: 15px;
+        }
+        #user {
+        margin-top: 10px;
+        margin-left: 0px;
+        margin-right: 0px;
+        padding: 0px;
+        }
+        #username {
+        font-size: 20px;
+        }
+		.detective {
+		color: rgb(66,66,255);
+		font-weight: bold;
+		}
+		.traitor {
+		color: #FF0033;
+		font-weight: bold;
+		}
+		.innocent {
+		color: rgb(85,255,66);
+		font-weight: bold;
+		}
+        </style>
+    </head>
+    <body>
+    <!-- Static navbar -->
+    <div class="navbar navbar-static-top" role="navigation">
+      <div class="container" id="header">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Centzilius' TTT Server</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+          </ul>
+          <div id="user" class="nav navbar-nav navbar-right">
+            <img id="avatar"> <span id="username"></span>
+          </div>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+        <div class="container">
+            <div id="mapname" class="alert alert-info">
+            Du bist auf dem Weg nach .
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="panel panel-danger">
+                        <div class="panel-heading">
+                            Regeln
+                        </div>
+                        <div class="panel-body">
+                            <ul>
+                                <li><b>RDM ist verboten!</b></li>
+                                <li>Das tragen von <span class="traitor">Traitorwaffen</span>, welche man durch das Töten des <span class="traitor">Traitors</span> bekommen hat, ist nur mit einwilligung des <span class="detective">Detectives</span> erlaubt</li>
+                                <li><b>Voicespam</b> ist <b>verboten</b></li>
+                                <li>Unbegründetes KOS setzen ist als <span class="innocent">Innocent</span> / <span class="detective">Detective</span> verboten</li>
+                                <li><b>Trolling</b> ist <b>verboten</b></li>
+                                <li><span class="traitor">Traitortesterpflicht</span> besteht <b>nicht</b></li>
+                                <li>Admins haben immer Recht</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            Info
+                        </div>
+                        <div class="panel-body">
+                            <ul>
+                               <li>Maps aus anderen Source spielen werden nicht vom FastDL Server angeboten. <span class="text-muted">(Beispiel: cs_office)</span></li>
+                               <li>Schaut doch mal auf forum.centzilius.de vorbei, wo man unteranderem Mapvorschläge machen kann</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script>
+        	function GameDetails( servername, serverurl, mapname, maxplayers, steamid, gamemode ) {
+        	$('#mapname').html('Du bist auf dem Weg nach ' + mapname + '.');
+        	$.ajax({
+                url: 'http://loading.centzilius.de/steamapi/?cid=' + steamid,
+                type: "GET",
+                dataType: "json",
+                success: function(res){
+                	var player = res.response.players[0];
+                    $('#username').html(player.personaname);
+                    $('#avatar').attr('src',player.avatarmedium);
+                }
+            });
+        	}
+        </script>
+    </body>
+</html>

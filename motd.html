@@ -1,0 +1,88 @@
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<title>Centzilius' TTT Server</title>
+		<style type="text/css">
+			.container {
+			padding-top: 15px;
+			}
+			.detective {
+			color: rgb(66,66,255);
+			font-weight: bold;
+			}
+			.traitor {
+			color: #FF0033;
+			font-weight: bold;
+			}
+			.innocent {
+			color: rgb(85,255,66);
+			font-weight: bold;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<div class="alert alert-success" id="welcome">Willkommen <span id="playername">Spieler</span> auf meinem Server!<br>
+				Du spielst gerade auf der Map <span id="map"></span>.
+			</div>
+			<div class="row">
+				<div class="col-md-6">
+					<div class="panel panel-danger">
+						<div class="panel-heading">
+							Regeln
+						</div>
+						<div class="panel-body">
+                            <ul>
+                                <li><b>RDM ist verboten!</b></li>
+                                <li>Das tragen von <span class="traitor">Traitorwaffen</span>, welche man durch das Töten des <span class="traitor">Traitors</span> bekommen hat, ist nur mit einwilligung des <span class="detective">Detectives</span> erlaubt</li>
+                                <li><b>Voicespam</b> ist <b>verboten</b></li>
+                                <li>Unbegründetes KOS setzen ist als <span class="innocent">Innocent</span> / <span class="detective">Detective</span> verboten</li>
+                                <li><b>Trolling</b> ist <b>verboten</b></li>
+                                <li><span class="traitor">Traitortesterpflicht</span> besteht <b>nicht</b></li>
+                                <li>Admins haben immer Recht</li>
+                            </ul>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="panel panel-warning">
+						<div class="panel-heading">
+							Servereinstellungen
+						</div>
+						<div class="panel-body">
+							<ul>
+								<li><span class="detective">Detectives</span> gibt es ab <b>5 Spielern</b></li>
+								<li>Um <span class="detective">Detective</span> zu werden, benötigt man <b>mindestens 1000 Karma</b></li>
+								<li><span class="detective">Detectives</span> haben <b>Hüte</b> (Nein... das ist nicht standard)</li>
+								<li>Das ändern des Namens während der Runde ist nicht möglich und man wird automatisch gekickt, jedoch nicht gebannt.</li>
+								<li><span class="detective">Detectives</span> starten mit <b>2 Credits</b></li>
+								<li><span class="detective">Detectives</span> bekommen <b>zusätzlich</b> einen Credit, wenn sie den <span class="traitor">Traitor</span> selber töten.</li>
+								<li><span class="traitor">Traitor</span> starten mit <b>4 Credits</b></li>
+								<li>Das <b>maximal Karma</b> beträgt <b>1200</b></li>
+								<li>Pro <span class="traitor">Traitorkill</span> bekommt man <b>100 Karma</b></li>
+								<li>Das <b>Karma</b> wird beim wechsel der Map / durch Reconnceten <b>nicht zurückgesetzt</b></li>
+								<li>Dauerhaftes Sprechen ist nicht möglich (Voice Drain)</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+		<script type="text/javascript">
+			function getUrlVars() {
+			    var vars = {};
+			    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+			        vars[key] = value;
+			    });
+		    return vars;
+			}
+			var steamid = getUrlVars()['id'];
+			var map = getUrlVars()['map'];
+			$("#map").html(map);
+		</script>
+	</body>
+</html>
